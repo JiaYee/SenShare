@@ -1,0 +1,56 @@
+
+<ion-header>
+<ion-navbar color="darkbule">
+      <ion-title>Upload Image</ion-title>
+      <a tappable ion-button  clear menuToggle >
+        <ion-icon name="menu"></ion-icon>
+ <!-- <img tappable src="assets/BLS_35.png"  class="logo_head"/> -->
+      </a>
+    
+  </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content padding>
+  <!--
+  <ion-card>
+    <ion-card-content>
+      Hello World, this is my camera app
+
+      <button (click)="takePicture()">Take a Picture</button>
+
+      Latest Picture:
+      <img [src]="base64Image" *ngIf="base64Image" />
+    </ion-card-content>
+  </ion-card>
+
+-->
+
+<div>
+<ion-list color="light">
+
+
+  <ion-item >
+    <div>
+    <img [src]="image_path"  (click) ="presentActionSheet()"/>
+    </div>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Description</ion-label>
+    <!--<ion-input type="text" [(ngModel)]="desc"></ion-input>-->
+    <ion-textarea rows="3" type="text" [(ngModel)]="desc"></ion-textarea>
+  </ion-item>
+
+
+
+</ion-list>
+
+
+</div>
+ <button ion-button full color="secondary" (click)="savebanner()">Save</button>
+ <button ion-button full color="danger"  (click)="cancel()">Cancel</button>
+
+</ion-content>

@@ -1,0 +1,235 @@
+
+<ion-header *ngIf="!showaddvideopage">
+ <ion-navbar color="darkbule">
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons end>
+      <button *ngIf="adminonly()" ion-button (click)="popOverEdit($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+ <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="tt" mode="ios">
+      <ion-segment-button value="details" (ionSelect)="listitem(param)">
+     Details
+      </ion-segment-button>
+      <ion-segment-button value="gallery" (ionSelect)="getGallery(param)" >
+      <img src="assets/gallery.png"/>
+      </ion-segment-button>
+      <ion-segment-button value="Videos" (ionSelect)="getVGallery(param)" >
+       <img src="assets/play.png"/>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<div class="addvidpage" *ngIf="showaddvideopage">
+  <ion-item >
+    <div>
+    <img class="addvid" [src]="thumbpath"  (click) ="presentActionSheet()"/>
+    </div>
+  </ion-item>
+
+  <ion-list color="light">
+    <ion-item>
+      <ion-label floating>Title</ion-label>
+      <ion-textarea rows="1" type="text" [(ngModel)]="vidtitle"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Description</ion-label>
+      <ion-textarea rows="3" type="text" [(ngModel)]="viddesc"></ion-textarea>
+    </ion-item>
+  </ion-list>
+  <button ion-button full color="secondary" (click)="saveVideo()">Save</button>
+  <button ion-button full color="danger"  (click)="cancel()">Cancel</button>
+</div>
+
+
+
+
+
+<ion-content class="bgcolor" *ngIf="!showaddvideopage">
+
+<!-- <ion-fab left bottom>
+  <button *ngIf="!isDelete" (click)="toggleDelete()" ion-fab color="danger"><ion-icon name="trash"></ion-icon></button>
+  <button *ngIf="isDelete" (click)="toggleDelete()" ion-fab color="light"><ion-icon name="trash"></ion-icon></button>
+</ion-fab> -->
+
+<div [ngSwitch]="tt">
+
+    <ion-list *ngSwitchCase="'details'">
+
+
+<div  class="img_item">
+ <img *ngIf="image_path" [src]="image_path"  (click)="view_photo(image_path,title)"  style="height: 200px;  width: 100%;" />
+
+<div class="top_text" >
+    <img *ngIf="checkfavo(items.id)==1" src="assets/LoveY_40.png" (click)=removfavo(items.id)/>
+      <img *ngIf="checkfavo(items.id)==2" src="assets/LoveG_40.png" (click)=favo(items)/><br>
+      <img src="assets/Tten_40.png" (click)="presentPopover($event,items.id)" style="margin-right: 3px;" />
+     </div>
+</div>
+
+<div class="deatils">
+<!-- working area -->
+
+<div class="info" *ngIf="items.categoryName">
+ <label>  Main Category : </label>
+ {{items.categoryName}}
+</div>
+
+<div class="info" *ngIf="items.name">
+<!--
+<label style="">Name : </label>
+ -->
+ <p text-justify class="name_box">{{items.name}} </p>
+</div>
+
+<div class="info" *ngIf="items.description">
+ <label> Description : </label>
+<div text-justify style="white-space: pre-line;">{{items.description}}</div>
+</div>
+
+<div class="info" *ngIf="items.address">
+<label> Address : </label>
+<div style="text-align: left; white-space: pre-line;" text-justify (click)="navigater(items.address)">{{items.address }}</div>
+</div>
+
+<div  class="info" *ngIf="items.phone_mobile">
+<label> Mobile : </label>
+{{items.phone_mobile}}
+</div>
+
+<div class="info" *ngIf="items.phone_office">
+<label> Phone : </label>
+<a href="tel:{{items.phone_office}}" class="phone_num"> {{items.phone_office}} </a>
+</div>
+
+<div style="padding: 0;" class="info" *ngIf="items.weekday_business_hour">
+ <label> Business Hour : </label>
+</div>
+
+<div class="info" *ngIf="items.weekday_business_hour">
+<label>Weekday : </label><br>
+<p text-justify class="wday_box" style="text-align-last: white-space: pre-line;"> {{items.weekday_business_hour}} </p>
+</div>
+
+<div class="info" *ngIf="items.weekend_business_hour">
+<label> Weekend : </label><br>
+<p text-justify class="wday_box" style="text-align-last: white-space: pre-line;">{{items.weekend_business_hour}}</p>
+</div>
+
+<div class="info" *ngIf="items.website_url">
+<label> Website : </label>
+<a text-justify (click)="open_url(items.website_url)">{{items.website_url}}</a>
+</div>
+
+<div  class="info" *ngIf="checkme(items.latitude)"   >
+<label> Latitude / Longitude : </label>
+<div text-justify (click)="navigater([items.latitude,items.longitude])" >{{items.latitude }} - {{items.longitude }}</div>
+</div>
+
+<div class="info" *ngIf="items.latitude">
+<label> created : </label>
+{{items.timestamp | date: 'MMMM/y'}}
+</div>
+
+<!-- end area  -->
+</div>
+
+
+
+
+   </ion-list>
+
+    <ion-list *ngSwitchCase="'gallery'" >
+
+<!-- <ion-grid *ngIf="!isDelete">
+  <ion-row wrap>
+    <ion-col col-4 *ngFor="let pic of gallery ; let i = index">
+        <img [src]="pic.tmp" width="400px" height="75px" (click)="openGallery(i)">
+    </ion-col>
+  </ion-row>
+</ion-grid> -->
+
+<ion-grid>
+  <ion-row wrap>
+    <ion-col col-4 *ngFor="let pic of gallery ; let i = index">
+        <img [src]="pic.tmp" width="400px" height="75px" (press)="openEdit(pic)" (click)="openGallery(i)">
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<!--
+<ion-fab right bottom>
+ <button ion-fab color="light" (click)="openBanner()" ><ion-icon name="add" ></ion-icon></button>
+
+</ion-fab>
+-->
+
+       </ion-list>
+
+    <ion-list *ngSwitchCase="'Videos'" >
+
+      <div class="deatils" *ngIf="selected" (click)="openVideo(selected.video_path)">
+        <img class="vid" [src]="selected.image_path">
+        <img class="playicon" src="assets/playbutton.png">
+
+        <!-- <ion-icon class="playicon" name="play"></ion-icon> -->
+        <!-- <h3 style="padding-left: 10px"> {{selected.name}} </h3>
+        <p style="padding-left: 10px"> {{selected.description}} </p> -->
+        <div class="info">
+         <label> <b>{{selected.name}}</b> </label>
+        <div text-justify style="white-space: pre-line;">{{selected.description}}</div>
+        </div>
+      </div>
+
+      <ion-grid>
+        <ion-row wrap>
+          <ion-col col-4 *ngFor="let vid of vgallery" >
+            <div >
+              <img [src]="vid.image_path" width="400px" height="75px" (click)="selectVideo(vid)" (press)="deleteVid(vid)">
+            </div>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+
+      <!-- <ion-item>
+
+         <ion-scroll scrollX style="height:100px;">
+        <div class="scroll-item">
+        <ion-col col-33 *ngFor="let vid of vgallery">
+       <div class="card card-1" (click)="selectVideo(vid)">
+
+         <img src="{{vid.image_path}}">
+         </div>
+          </ion-col>
+         </div>
+         </ion-scroll>
+
+      </ion-item> -->
+
+
+
+    </ion-list>
+
+
+</div>
+<ion-fab right bottom>
+<button ion-fab color="light"><ion-icon name="arrow-dropup"></ion-icon></button>
+    <ion-fab-list side="top">
+       <button *ngIf="adminonly()"  ion-fab color="light" (click)="openBanner()"><ion-icon name="image"></ion-icon></button>
+     <button *ngIf="adminonly()"  ion-fab color="light" (click)="promptVideo()"><ion-icon name="videocam"></ion-icon></button>
+
+     <button ion-fab color="light" (click)="sharelink(items.category_id,items.id)"><ion-icon name="share"></ion-icon></button>
+
+
+         </ion-fab-list>
+
+
+</ion-fab>
+
+</ion-content>

@@ -1,0 +1,132 @@
+<ion-header>
+  <ion-navbar color="darkbule">
+    <ion-title>Create Category</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <form [formGroup]="createContent">
+        <ion-list>
+
+            <ion-item>
+                <div>
+                    <img [src]="image_path"  (click) ="presentActionSheet()"/>
+                </div>
+            </ion-item>
+
+            <ion-list-header no-margin no-lines>
+                Main Category
+            </ion-list-header>
+
+            <ion-item>
+                <ion-select no-padding no-margin formControlName="mainCat">
+                    <ion-option *ngFor="let cat of mainCatList" value="{{cat.id}}">{{cat.name}}</ion-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label stacked>Name:</ion-label>
+                <ion-textarea rows="5" type="text" placeholder="Name" formControlName="name"></ion-textarea>
+            </ion-item>
+
+            <!--<ion-item>
+                <ion-label stacked>Description:</ion-label>
+                <ion-input type="text" placeholder="Description" formControlName="desc"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label stacked>Address:</ion-label>
+                <ion-input type="text" placeholder="Address" formControlName="address"></ion-input>
+            </ion-item>-->
+
+
+            <ion-item>
+                <ion-label stacked>Description:</ion-label>
+                <ion-textarea rows="10" type="text" placeholder="Description" formControlName="desc"></ion-textarea>
+            </ion-item>
+
+            <ion-item>
+                <ion-label stacked>Address:</ion-label>
+                <ion-textarea rows="5" type="text" placeholder="Address" formControlName="address"></ion-textarea>
+            </ion-item>
+
+
+            <ion-list radio-group formControlName="type" (ionChange)="selectType()" no-lines>
+              <ion-list-header>
+                Type
+              </ion-list-header>
+              <ion-item>
+                <ion-label>食尚</ion-label>
+                <img src="assets/foodicon.png" item-left width="27px" height="27px"/>
+                <ion-radio value="0"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>親子活动</ion-label>
+                <img src="assets/familyicon.png" item-left width="27px" height="27px"/>
+                <ion-radio value="2"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>發現之旅</ion-label>
+                <img src="assets/globe.png" item-left width="27px" height="27px"/>
+                <ion-radio value="1"></ion-radio>
+              </ion-item>
+            </ion-list>
+
+            <!-- <hr> -->
+            <!-- <ion-item>
+                <ion-label>Type</ion-label>
+                <ion-select formControlName="type" (ionChange)="selectType()">
+                    <ion-option value="0">食尚</ion-option>
+                    <ion-option value="2">親子活动</ion-option>
+                    <ion-option value="1">發現之旅</ion-option>
+                </ion-select>
+            </ion-item> -->
+
+            <ion-item [hidden]="infoFlag">
+                <ion-label stacked>Phone:</ion-label>
+                <ion-input type="text" placeholder="Phone(Office)" formControlName="phoneNo"></ion-input>
+            </ion-item>
+
+            <ion-list-header no-lines [hidden]="infoFlag">
+                Business Hour
+            </ion-list-header>
+
+            <!--<ion-item [hidden]="infoFlag">
+                <ion-label stacked>Weekday:</ion-label>
+                <ion-input type="text" placeholder="Weekday Business hour" formControlName="weekday"></ion-input>
+            </ion-item>
+
+            <ion-item [hidden]="infoFlag">
+                <ion-label stacked>Weekend:</ion-label>
+                <ion-input type="text" placeholder="Weekend Business hour" formControlName="weekend"></ion-input>
+            </ion-item>-->
+
+            <ion-item [hidden]="infoFlag">
+                <ion-label stacked>Weekday:</ion-label>
+                <ion-textarea rows="8" type="text" placeholder="Weekday Business hour" formControlName="weekday"></ion-textarea>
+            </ion-item>
+
+            <ion-item [hidden]="infoFlag">
+                <ion-label stacked>Weekend:</ion-label>
+                <ion-textarea rows="8" type="text" placeholder="Weekend Business hour" formControlName="weekend"></ion-textarea>
+            </ion-item>
+
+            <ion-item>
+                <ion-label stacked>Website:</ion-label>
+                <ion-input type="text" placeholder="Website" formControlName="website"></ion-input>
+            </ion-item>
+
+            <ion-item [hidden]="locationFlag">
+                <ion-label>
+                    GPS: {{latitude}}, {{longitude}}
+                </ion-label>
+            </ion-item>
+
+        </ion-list>
+
+        <button ion-button full color="secondary" [hidden]="locationFlag" (click)="removeLoc()">Remove Location</button>
+        <button ion-button full color="secondary" [hidden]="!locationFlag" (click)="addLoc()">Add Location</button>
+        <button ion-button full color="secondary" (click)="submitForm()">Save</button>
+        <button ion-button full color="danger" (click)="onCancelClick()">Cancel</button>
+    </form>
+</ion-content>

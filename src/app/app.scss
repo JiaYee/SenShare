@@ -1,0 +1,88 @@
+.md .logo_head {
+    // width: 73px;
+    margin-left: -21px;
+    margin-top: -2px;
+}
+
+.ios .logo_head {
+    // width: 65px;
+    margin-left: -15px;
+    margin-top: -4px;
+}
+
+// .md ion-navbar {
+//     height: 50px;
+// }
+
+// .ios ion-navbar {
+//     height: 70px;
+// }
+
+.toolbar-md {
+     padding: 0px;
+   
+}
+.topmenutitle
+{
+color: #fff;
+
+}
+
+
+.toolbar-ios {
+     padding: 0px;
+   
+}
+
+
+
+.menu_app{
+	background:#232939 !important;
+	
+	}	
+.menu_app .item-complex .item-content{
+	background:none;
+	padding:15px;
+	padding-left:37px;
+	font-size:14px;
+	}	
+.menu_app .item-md{
+	background:none;
+	border:none;
+	border-bottom:1px solid #4f5974;
+	color:#fff
+	}	
+.menu_app .item:last-child{
+	border:none
+	}	
+.menu_app .item-icon-left .icon{
+	color:#fff;
+	font-size:20px;
+	}
+.menu_app .list{
+    margin-left: 13px;
+    }
+.menu_app .item-icon-left .icon{
+    left: 0
+    }
+
+.menu_app .item-md {
+    position: relative;
+    padding-right: 0;
+    /* padding-left: 16px; */
+    font-size: 1.6rem;
+    font-weight: normal;
+    text-transform: none;
+    color:#fff;
+   
+    box-shadow: none;
+    transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+
+
+/*****************/
+
+
+

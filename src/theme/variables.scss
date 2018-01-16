@@ -1,0 +1,81 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/v2/theming/
+$font-path: "../assets/fonts";
+
+@import "ionic.globals";
+
+$colors: (
+  primary:    #387ef5,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  lightgrey: #D3D3D3,
+  dark:       #222,
+ darkcray:#232939,
+ darkbule:#204987
+);
+
+$popover-md-border-radius: 10px;
+
+$list-ios-header-color: #fff;
+$text-color: #fff !default;
+$background-color: #002146 !default;
+$item-md-font-size:1.3rem;
+
+$h1-font-size:2.6rem;
+$h2-font-size:2.4rem;
+$h3-font-size:2.2rem;
+$h4-font-size:2rem;
+$h5-font-size:1.8rem;
+$h6-font-size:1.5rem;
+
+
+$toolbar-md-height:35px;
+$toolbar-ios-height:35px;
+
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+$toolbar-ios-title-font-size: 1.7rem;
+$popover-ios-width:150px;
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+$toolbar-md-title-font-size: 1.5rem;
+$popover-md-width:150px;
+$menu-width:250px;
+
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
+
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/v2/ionicons/
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";

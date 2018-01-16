@@ -1,0 +1,97 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "com-sarriaroman-photoviewer": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "com.hutchind.cordova.plugins.streamingmedia": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "cordova-base64-to-gallery": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "cordova-plugin-browsertab": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "cordova-plugin-console": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "cordova-plugin-device-orientation": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "cordova-plugin-filechooser": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "cordova-plugin-filepath": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "cordova-plugin-http": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "cordova-plugin-image-picker": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "cordova-plugin-media-capture": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "cordova-plugin-screen-orientation": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "info.protonet.imageresizer": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "ionic-plugin-keyboard": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "uk.co.workingedge.phonegap.plugin.launchnavigator": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "cordova-plugin-video-editor": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-actionsheet": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    },
+    "cordova-plugin-compat": {
+      "PACKAGE_NAME": "com.chrysasys.placediary"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+
+<ion-header>
+    <ion-navbar color="darkbule">
+        <ion-title>Upload Image</ion-title>
+        <button ion-button clear menuToggle >
+        <img src="assets/head_logo.png"  class="logo_head"/>
+        </button>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <div>
+        <ion-list color="light">
+
+            <ion-item >
+                <div>
+                <img [src]="image_path"  (click) ="presentActionSheet()"/>
+                </div>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>Description</ion-label>
+                <!--<ion-input type="text" [(ngModel)]="desc"></ion-input>-->
+                <ion-textarea rows="3" type="text" [(ngModel)]="desc"></ion-textarea>
+            </ion-item>
+
+        </ion-list>
+    </div>
+    <button ion-button full color="secondary" (click)="savebanner()">Save</button>
+    <button ion-button full color="danger"  (click)="cancel()">Cancel</button>
+
+</ion-content>

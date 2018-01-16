@@ -1,0 +1,24 @@
+
+
+<ion-content >
+
+ <ion-fab top right edge style="padding-top: 50px; padding-right: 20px">
+    <button ion-fab mini color="danger"  (click)="closePage()"  ><ion-icon  name="close"  ></ion-icon></button>
+    </ion-fab>
+
+<ion-slides #slides progress zoom>
+  <ion-slide  *ngFor="let pic of mygallery"   padding>
+    <img [src]="pic.src">
+     <ion-fab bottom right style="padding-right: 20px" >
+   <button ion-fab mini >info</button>
+   <ion-fab-list side="top" style="left: -250px; font-size: small; padding: 5px;">
+     <p  wrap>
+There are a myriad of satellites in orbit of Earth with cameras that can send back amazing photos, but they can’t snap a photo of the entire planet at once. NASA’s Earth Polychromatic Imaging Camera (EPIC) camera can, though. It sends back thousands of amazing photos every year, and now you can peruse them more easily with the new website. It is, dare I say, epic.
+</p>
+   </ion-fab-list>
+  
+ </ion-fab>
+   </ion-slide>
+ </ion-slides>
+
+</ion-content>

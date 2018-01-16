@@ -1,0 +1,8 @@
+{
+  "name": "bwls2",
+  "app_id": "07764a8b",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

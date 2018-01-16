@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-navbar color="darkbule">
+      <a tappable ion-button  clear menuToggle >
+        <ion-icon name="menu"></ion-icon>
+ <!-- <img tappable src="assets/BLS_35.png"  class="logo_head"/> -->
+      </a>
+
+ <ion-buttons end>
+        <button ion-button  (click)="presentPopover($event)">
+      <ion-icon name="more"></ion-icon>
+      </button>
+ </ion-buttons>
+
+    <ion-title>Between Lifestyle</ion-title>
+
+  </ion-navbar>
+  <ion-searchbar class="sb" *ngIf="showme" (search)="getItems($event)" [showCancelButton]="shouldShowCancel"  (ionCancel)="onCancel($event)">></ion-searchbar>
+   <button *ngIf="showme" ion-button icon-only class="sbl" (click)="showLP()">
+     <ion-icon name="arrow-dropdown"></ion-icon>
+   </button>
+
+</ion-header>
+
+  <!-- slider area -->
+  <!--<div class="slideshow">-->
+  <div class="superfilter" *ngIf="showpopover">
+        <ion-list class="leftpanel" no-lines>
+            <button [style.background-color]="country.selected ? '#A9A9A9' : '#D3D3D3'" ion-button *ngFor="let country of countries ; let i = index" color="lightgrey" block (click)="filterRight(country, i)">{{country.name}}</button>
+        </ion-list>
+
+        <ion-list class="rightpanel" no-lines>
+          <button *ngFor="let location of locations" ion-button block (click)="goSublist(location.name, location.id)">{{location.chinese}}<br>{{location.english}}</button>
+        </ion-list>
+  </div>
+
+  <ion-content *ngIf="!showpopover">
+
+
+
+<ion-slides class="slideshow">
+  <ion-slide *ngFor="let slide of slides">
+    <img [src]="slide.Image_Path" class="slideimg" (click)="view_photo(slide.Image_Path,slide.name)"/>
+  </ion-slide>
+</ion-slides>
+
+<!--</div>-->
+
+<!-- end slide -->
+
+<!-- Side 3 icons area -->
+
+
+<div  class="social_blk">
+
+  <img class="sb1" src="assets/earth45.png"  [navPush]="earthpage" />
+
+<img class="sb2" src="assets/mark45.png" [navPush]="eventpage" />
+
+<img class="sb3" src="assets/citytour1.png" (click)="goBLS()" />
+  </div>
+
+<!-- end icons -->
+
+<!-- items scrolling part  -->
+
+<div class="items_top">
+
+  <div class="img_item" *ngFor="let item of items" [ngStyle]="listimage(item.image_path)" style =" transform: translate3d(0px, 0px, 0px);" (tap)="openPage(item)" (press)="promptActionSheet(item)">
+    <!-- <div class="img_item" *ngFor="let item of items" [ngStyle]="listimage(item.image_path)" style =" transform: translate3d(0px, 0px, 0px);" (click)="openPage(item)"> -->
+ <ion-badge *ngIf="item.count"  color ="danger" item-right style="margin:0px; width: 40px;">{{item.count}}</ion-badge>
+   <div class="bottom_txt">
+   <p> {{item.name}} </p>
+     </div>
+
+  </div>
+</div>
+<ion-fab right bottom>
+
+
+
+
+
+<button ion-fab color="light"><ion-icon name="arrow-dropup"></ion-icon></button>
+    <ion-fab-list side="top">
+       <button ion-fab color="light" (click)="seachshow()"><ion-icon name="search"></ion-icon></button>
+       <button *ngIf="adminonly()" ion-fab color="light"  [navPush]="addcategorypage"><ion-icon name="add"></ion-icon></button>
+    </ion-fab-list>
+
+
+</ion-fab>
+</ion-content>

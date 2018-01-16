@@ -1,0 +1,56 @@
+
+<ion-header>
+ <ion-navbar color="darkbule" class="navbar">
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons end>
+      <button *ngIf="!showlocpage" color="white" ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="list"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+ <ion-searchbar class="sb" *ngIf="showme" (search)="getItems($event)" [showCancelButton]="shouldShowCancel"  (ionCancel)="onCancel($event)">></ion-searchbar>
+  <button *ngIf="showme" ion-button icon-only class="sbl" (click)="showLP()">
+    <ion-icon name="arrow-dropdown"></ion-icon>
+  </button>
+
+   <!-- <ion-select class="sbl" *ngIf="showme" placeholder="V" [(ngModel)]="loc" (ionChange)="washData(loc)" interface="action-sheet">
+     <ion-option *ngFor="let location of locations" value="{{location.name}}">{{location.name}}</ion-option>
+   </ion-select> -->
+</ion-header>
+
+<div class="locpage" *ngIf="showlocpage">
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let location of locations" col-6>
+        <button ion-button block (click)="washData(location.name)">{{location.chinese}}<br>{{location.english}}</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+
+<ion-content >
+
+
+  <div class="img_item" *ngFor="let item of items" [ngStyle]="listimage(item.image_path)" style =" transform: translate3d(0px, 0px, 0px);" (click)="openPage(item)" (press)="presentAS(item)">
+
+   <div class="bottom_txt">
+   <p> {{item.content_name}} </p>
+     </div>
+
+  </div>
+
+<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+
+<ion-fab right bottom>
+ <button ion-fab color="light" (click)="seachshow()"><ion-icon name="search"></ion-icon></button>
+
+</ion-fab>
+
+</ion-content>

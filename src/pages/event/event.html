@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar color="darkbule">
+      <ion-title>Location</ion-title>
+
+      <a tappable ion-button  clear menuToggle >
+        <ion-icon name="menu"></ion-icon>
+ <!-- <img tappable src="assets/BLS_35.png"  class="logo_head"/> -->
+      </a>
+
+
+  </ion-navbar>
+   <ion-searchbar *ngIf="showme" (ionInput)="getItems($event)" [showCancelButton]="shouldShowCancel"  (ionCancel)="onCancel($event)">></ion-searchbar>
+
+</ion-header>
+
+<ion-content >
+
+  <div class="img_item" *ngFor="let item of items" [ngStyle]="listimage(item.image_path)" style =" transform: translate3d(0px, 0px, 0px);" (click)="openPage(item)">
+    <ion-badge *ngIf="item.count"  color ="danger" item-right style="margin:0px; width: 40px;">{{item.count}}</ion-badge>
+   <div class="bottom_txt">
+   <p> {{item.name}} </p>
+     </div>
+
+  </div>
+
+<ion-fab right bottom>
+
+
+
+<button ion-fab color="light"><ion-icon name="arrow-dropup"></ion-icon></button>
+    <ion-fab-list side="top">
+       <button ion-fab color="light" (click)="seachshow()"><ion-icon name="search"></ion-icon></button>
+       <button ion-fab color="light" [navPush]="addcategorypage"><ion-icon name="add"></ion-icon></button>
+    </ion-fab-list>
+
+
+</ion-fab>
+</ion-content>

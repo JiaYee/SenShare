@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-navbar color="darkbule">
+    <a tappable ion-button  clear menuToggle >
+      <ion-icon name="menu"></ion-icon>
+<!-- <img tappable src="assets/BLS_35.png"  class="logo_head"/> -->
+    </a>
+    <ion-title>Top Thirty</ion-title>
+  </ion-navbar>
+ <ion-searchbar *ngIf="showme" (ionInput)="getItems($event)" [showCancelButton]="shouldShowCancel"  (ionCancel)="onCancel($event)">></ion-searchbar>
+
+
+ <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="tt">
+      <ion-segment-button value="malaysia"  (ionSelect)="listitem('segment=1')">
+        Malaysia
+      </ion-segment-button>
+      <ion-segment-button value="asia"  (ionSelect)="listitem('segment=2')">
+        Asia Pacific
+      </ion-segment-button>
+      <ion-segment-button value="world"  (ionSelect)="listitem('segment=3')">
+        World
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+
+</ion-header>
+
+<ion-content>
+  <div [ngSwitch]="tt">
+
+    <ion-list *ngSwitchCase="'malaysia'">
+
+  <div   class="img_item" *ngFor="let item of items " [ngStyle]="listimage(item.image_path)" style =" transform: translate3d(0px, 0px, 0px);" (click)="openPage(item)">
+
+   <div class="bottom_txt">
+   <p> {{item.name}} </p>
+     </div>
+
+  </div>
+
+
+    </ion-list>
+
+
+
+    <ion-list *ngSwitchCase="'asia'" >
+
+      <div   class="img_item" *ngFor="let item of items " [ngStyle]="listimage(item.image_path)" style =" transform: translate3d(0px, 0px, 0px);" (click)="openPage(item)">
+
+   <div class="bottom_txt">
+   <p> {{item.name}} </p>
+     </div>
+
+  </div>
+
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'world'" >
+
+      <div   class="img_item" *ngFor="let item of items " [ngStyle]="listimage(item.image_path)" style =" transform: translate3d(0px, 0px, 0px);" (click)="openPage(item)">
+
+   <div class="bottom_txt">
+   <p> {{item.name}} </p>
+     </div>
+
+  </div>
+
+    </ion-list>
+  </div>
+
+<ion-fab right bottom>
+ <button ion-fab color="light" (click)="seachshow()"><ion-icon name="search"></ion-icon></button>
+
+</ion-fab>
+
+</ion-content>

@@ -444,13 +444,15 @@ export class AddcontentPage {
 
         console.log('sub', this.imgFileURL);
 
+        let user_id = this.ss.readData("user_id");
+
         let loading = this.loadingCtrl.create({
             content: 'Please wait...'
         });
 
         loading.present();
 
-        this.ss.insertContent("name="+form.name+"&desc="+form.desc+"&type="+this.type.value+"&address="+form.address+"&phone_office="+form.phoneNo+"&phone_mobile="+''+"&weekday_business_hour="+form.weekday+"&weekend_business_hour="+form.weekend+"&website_url="+form.website+"&latitude="+this.latitude+"&longitude="+this.longitude+"&image_path="+this.imgFileURL+"&category_id="+form.mainCat, 'insertContent.php').then(
+        this.ss.insertContent("user_id="+user_id+"&name="+form.name+"&desc="+form.desc+"&type="+this.type.value+"&address="+form.address+"&phone_office="+form.phoneNo+"&phone_mobile="+''+"&weekday_business_hour="+form.weekday+"&weekend_business_hour="+form.weekend+"&website_url="+form.website+"&latitude="+this.latitude+"&longitude="+this.longitude+"&image_path="+this.imgFileURL+"&category_id="+form.mainCat, 'insertContent.php').then(
             (res) => {
                 loading.dismiss();
                 console.log('res', res);

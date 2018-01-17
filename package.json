@@ -1,7 +1,7 @@
 {
-  "name": "ionic-hello-world",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "SenShare",
+  "author": "ChrysaSys",
+  "homepage": "http://chrysasys.com/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -37,8 +37,8 @@
     "@ionic/storage": "2.0.0",
     "ajv": "5.0.0",
     "com-sarriaroman-photoviewer": "~1.1.10",
-    "cordova-android": "^6.2.3",
     "cordova-plugin-camera": "~2.3.1",
+    "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-console": "1.0.5",
     "cordova-plugin-device": "1.1.4",
     "cordova-plugin-file": "~4.3.1",
@@ -71,7 +71,7 @@
     "rxjs": "5.4.2",
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.14",
-    "com.hutchind.cordova.plugins.streamingmedia": "~0.1.4"
+    "cordova-android": "~6.3.0"
   },
   "devDependencies": {
     "@ionic/app-scripts": "2.0.2",
@@ -85,7 +85,7 @@
     "cordova-plugin-statusbar"
   ],
   "cordovaPlatforms": [],
-  "description": "bwls2: An Ionic project",
+  "description": "SenShare: An Ionic project",
   "cordova": {
     "plugins": {
       "com-sarriaroman-photoviewer": {},
@@ -105,7 +105,6 @@
       "cordova-plugin-file-transfer": {},
       "cordova-plugin-media-capture": {},
       "cordova-plugin-camera": {},
-      "com.hutchind.cordova.plugins.streamingmedia": {},
       "cordova-plugin-whitelist": {},
       "cordova-plugin-video-editor": {}
     },

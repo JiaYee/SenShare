@@ -132,9 +132,10 @@ export class SubPage {
 @Component({
   template: `
      <ion-list color="light">
-      <button ion-item icon-right (click)="presentPopover($event)">Admin</button>
-       <button ion-item (click)="validationPop()">Validation Code</button>
-      <button *ngIf="adminonly()"  ion-item  (click)="logout()">Logout</button>
+      <button ion-item *ngIf="checkLogin()" icon-right (click)="presentPopover($event)">Admin</button>
+       <button ion-item *ngIf="!checkLogin()" (click)="validationPop()">Login</button>
+       <button ion-item *ngIf="!checkLogin()" (click)="registerPop()">Register</button>
+      <button *ngIf="checkLogin" ion-item  (click)="logout()">Logout</button>
        </ion-list>
       `
 })
@@ -165,18 +166,72 @@ this.aboutpage =AboutusPage;
     toast.present();
   }
 
+  checkLogin()
+  {
+    if(this.ss.readData("user_id"))
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+
+  registerPop()
+  {
+
+   let alert = this.alertCtrl.create({
+      title: 'Register',
+      inputs: [
+        {
+          name: 'phone',
+          placeholder: 'Phone Number',
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Register',
+          handler: data => {
+           let loading = this.loadingCtrl.create({
+            content: 'Please wait...'
+            });
+          loading.present();
+          this.ss.dataList("phone="+data.phone,"register.php").then((response)=>{
+
+            data = response;
+            console.log(data);
+            loading.dismiss();
+            if(data.User_ID)
+            {
+              this.presentToast("Register Successful");
+            }
+            else
+            {
+              this.presentToast("Register Failed");
+            }
+
+          }).catch((Error)=>{
+              console.log("Connection Error"+Error);
+              loading.dismiss();
+          });
 
 
+          }
+        }
+      ]
+    });
+    alert.present();
+   this.viewCtrl.dismiss();
 
-
-addme(seg:string)
-
-{
-
-
-  this.viewCtrl.dismiss();
-}
-
+  }
 
 
 validationPop()
@@ -186,13 +241,8 @@ validationPop()
     title: 'Login',
     inputs: [
       {
-        name: 'username',
-        placeholder: 'Username'
-      },
-      {
-        name: 'password',
-        placeholder: 'Password',
-        type: 'password'
+        name: 'phone',
+        placeholder: 'Phone Number',
       }
     ],
     buttons: [
@@ -207,33 +257,31 @@ validationPop()
         text: 'Login',
         handler: data => {
          let loading = this.loadingCtrl.create({
-    content: 'Please wait...'
-  });
-loading.present();
+          content: 'Please wait...'
+          });
+        loading.present();
+        this.ss.dataList("phone="+data.phone,"login.php").then((response)=>{
 
- this.ss.dataList("verification_code="+data.password,"newVVC.php").then((response)=>{
+          data = response;
+          console.log(data);
+          loading.dismiss();
+          if(data.User_ID)
+          {
+            this.ss.saveData("loginSts","1");
+            this.ss.saveData("user_id", data.User_ID);
+            this.ss.saveData("delete_action", "1");
+            this.presentToast("Login Successful");
+            location.reload();
+          }
+          else
+          {
+            this.presentToast("Login Failed");
+          }
 
-let myname =data.username;
-
-loading.dismiss();
- data =response;
- console.log(data);
-
-if(data.data.status)
-{
-this.ss.saveData("myname",myname);
-this.ss.saveData("loginSts","1");
-this.ss.saveData("delete_action", data.data.delete_action);
-this.presentToast("login successful");
-}
-else
-{
-this.presentToast("login failed");
-}
-  }).catch((Error)=>{
-console.log("Connection Error"+Error);
-loading.dismiss();
-    });
+        }).catch((Error)=>{
+            console.log("Connection Error"+Error);
+            loading.dismiss();
+        });
 
 
         }
@@ -268,8 +316,10 @@ loading.dismiss();
   {
     this.ss.deleteData("loginSts");
     this.ss.deleteData("myname");
+    this.ss.deleteData("user_id");
     this.presentToast("Logout successful");
     this.viewCtrl.dismiss();
+    location.reload();
   }
 
 
@@ -388,9 +438,9 @@ export class HomePage {
         });
   }
 
-  goBLS()
+  goFave()
   {
-    window.open("http://www.citytour.com.my/")
+    this.navCtrl.push(FavePage);
   }
 
   updateMainCat() {
@@ -456,7 +506,9 @@ export class HomePage {
         content: 'Please wait...'
       });
     loading.present();
-    this.ss.dataList("type=1&start=0","getMainCategoryDataByType.php").then((response)=>{
+
+    let user_id = this.ss.readData("user_id");
+    this.ss.dataList("user_id="+user_id+"&type=1&start=0","getMainCategoryDataByType.php").then((response)=>{
         this.items =response;
         this.items=this.items.Data;
         console.log(this.items);

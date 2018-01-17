@@ -8,90 +8,78 @@
   },
   "installed_plugins": {
     "com-sarriaroman-photoviewer": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
-    },
-    "com.hutchind.cordova.plugins.streamingmedia": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
+      "PACKAGE_NAME": "com.chrysasys.senshare"
     },
     "cordova-base64-to-gallery": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
-    },
-    "cordova-plugin-browsertab": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
+      "PACKAGE_NAME": "com.chrysasys.senshare"
     },
     "cordova-plugin-camera": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
+      "PACKAGE_NAME": "com.chrysasys.senshare"
     },
     "cordova-plugin-console": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
+      "PACKAGE_NAME": "com.chrysasys.senshare"
     },
     "cordova-plugin-device": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
+      "PACKAGE_NAME": "com.chrysasys.senshare"
     },
     "cordova-plugin-device-orientation": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
+      "PACKAGE_NAME": "com.chrysasys.senshare"
     },
     "cordova-plugin-file": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
+      "PACKAGE_NAME": "com.chrysasys.senshare"
     },
     "cordova-plugin-file-transfer": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
+      "PACKAGE_NAME": "com.chrysasys.senshare"
     },
     "cordova-plugin-filechooser": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
+      "PACKAGE_NAME": "com.chrysasys.senshare"
     },
     "cordova-plugin-filepath": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
+      "PACKAGE_NAME": "com.chrysasys.senshare"
     },
     "cordova-plugin-geolocation": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
+      "PACKAGE_NAME": "com.chrysasys.senshare"
     },
     "cordova-plugin-http": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
+      "PACKAGE_NAME": "com.chrysasys.senshare"
     },
     "cordova-plugin-image-picker": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
+      "PACKAGE_NAME": "com.chrysasys.senshare"
     },
     "cordova-plugin-inappbrowser": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
+      "PACKAGE_NAME": "com.chrysasys.senshare"
     },
     "cordova-plugin-media-capture": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
+      "PACKAGE_NAME": "com.chrysasys.senshare"
     },
     "cordova-plugin-screen-orientation": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
+      "PACKAGE_NAME": "com.chrysasys.senshare"
     },
     "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
+      "PACKAGE_NAME": "com.chrysasys.senshare"
     },
     "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
-    },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
-    },
-    "cordova-plugin-x-socialsharing": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
-    },
-    "info.protonet.imageresizer": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
-    },
-    "ionic-plugin-keyboard": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
-    },
-    "uk.co.workingedge.phonegap.plugin.launchnavigator": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
+      "PACKAGE_NAME": "com.chrysasys.senshare"
     },
     "cordova-plugin-video-editor": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
+      "PACKAGE_NAME": "com.chrysasys.senshare"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.chrysasys.senshare"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "com.chrysasys.senshare"
+    },
+    "info.protonet.imageresizer": {
+      "PACKAGE_NAME": "com.chrysasys.senshare"
+    },
+    "ionic-plugin-keyboard": {
+      "PACKAGE_NAME": "com.chrysasys.senshare"
     }
   },
   "dependent_plugins": {
     "cordova-plugin-actionsheet": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
-    },
-    "cordova-plugin-compat": {
-      "PACKAGE_NAME": "com.chrysasys.placediary"
+      "PACKAGE_NAME": "com.chrysasys.senshare"
     }
   }
 }

@@ -69,7 +69,8 @@ let loading = this.loadingCtrl.create({
     content: 'Please wait...'
   });
 loading.present();
- this.ss.dataList("type=2&start=0","getMainCategoryDataByType.php").then((response)=>{
+let user_id = this.ss.readData("user_id");
+this.ss.dataList("user_id="+user_id+"&type=2&start=0","getMainCategoryDataByType.php").then((response)=>{
 
 
 this.items =response;

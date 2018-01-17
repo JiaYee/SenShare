@@ -1,19 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.chrysasys.placediary" version="2.4.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.chrysasys.senshare" version="2.4.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <feature name="PhotoViewer">
         <param name="android-package" value="com.sarriaroman.PhotoViewer.PhotoViewer" />
-    </feature>
-    <feature name="StreamingMedia">
-        <param name="android-package" value="com.hutchind.cordova.plugins.streamingmedia.StreamingMedia" />
     </feature>
     <feature name="Base64ToGallery">
         <param name="android-package" value="it.nexxa.base64ToGallery.Base64ToGallery" />
     </feature>
     <feature name="ActionSheet">
         <param name="android-package" value="nl.xservices.plugins.actionsheet.ActionSheet" />
-    </feature>
-    <feature name="BrowserTab">
-        <param name="android-package" value="com.google.cordova.plugin.browsertab.BrowserTab" />
     </feature>
     <feature name="Camera">
         <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
@@ -76,18 +70,15 @@
         <param name="android-package" value="io.ionic.keyboard.IonicKeyboard" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="LaunchNavigator">
-        <param name="android-package" value="uk.co.workingedge.phonegap.plugin.LaunchNavigator" />
-    </feature>
     <feature name="FileChooser">
         <param name="android-package" value="com.megster.cordova.FileChooser" />
     </feature>
     <feature name="VideoEditor">
         <param name="android-package" value="org.apache.cordova.videoeditor.VideoEditor" />
     </feature>
-    <name>Between Lifestyle</name>
-    <description>Between Lifestyle</description>
-    <author email="Keithta2015@gmail.com" href="http://betweenlifestyle.com/">Between Lifestyle</author>
+    <name>SenShare</name>
+    <description>SenShare</description>
+    <author email="chrysasys@gmail.com" href="http://betweenlifestyle.com/">SenShare</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
@@ -113,6 +104,7 @@
     <allow-navigation href="http://192.168.26.127:8100" />
     <allow-navigation href="http://192.168.43.200:8100" />
     <allow-navigation href="http://192.168.0.101:8100" />
+    <allow-navigation href="http://192.168.26.95:8100" />
     <allow-intent href="market:*" />
     <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
     <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />

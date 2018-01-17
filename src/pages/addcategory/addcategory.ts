@@ -265,8 +265,9 @@ upload(imgurl){
   addCategory(imageUrl){
     let imgName = imageUrl.substring(imageUrl.lastIndexOf("/") + 1);
     this.imgFileURL = this.ss.fileURL + imgName;
+    let user_id = this.ss.readData("user_id");
 
-    this.param = "name="+this.name+"&image_path="+this.imgFileURL+"&type="+this.type+"&valid_flag="+"1";
+    this.param = "user_id="+user_id+"&name="+this.name+"&image_path="+this.imgFileURL+"&type="+this.type+"&valid_flag="+"1";
 
     console.log('aaa', this.imgFileURL);
     console.log('bbb', this.param);

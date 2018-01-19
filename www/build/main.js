@@ -1345,7 +1345,6 @@ var Servercon = (function () {
     Servercon.prototype.insertContent = function (param, page) {
         var _this = this;
         console.log('param', param);
-        // let yy = 'website_url=&weekend_business_hour=&category_id=16&phone_mobile=&weekday_business_hour=&phone_office=&name=JJ Hotel &image_path=http://betweenlifestyle.com/android/upload/no_photo.png&type=0&address=&desc=&latitude=3.0312371&longitude=101.61576'
         return new Promise(function (resolve) {
             _this.http.post(_this.ServerURL + page, param, _this.options)
                 .map(function (res) { return res.json(); })
@@ -1641,6 +1640,10 @@ var MorePage = (function () {
                 {
                     name: 'phone',
                     placeholder: 'Phone Number',
+                },
+                {
+                    name: 'password',
+                    placeholder: 'Password',
                 }
             ],
             buttons: [
@@ -1658,7 +1661,7 @@ var MorePage = (function () {
                             content: 'Please wait...'
                         });
                         loading.present();
-                        _this.ss.dataList("phone=" + data.phone, "register.php").then(function (response) {
+                        _this.ss.dataList("phone=" + data.phone + "&password=" + data.password, "register.php").then(function (response) {
                             data = response;
                             console.log(data);
                             loading.dismiss();
@@ -1687,6 +1690,10 @@ var MorePage = (function () {
                 {
                     name: 'phone',
                     placeholder: 'Phone Number',
+                },
+                {
+                    name: 'password',
+                    placeholder: 'Password',
                 }
             ],
             buttons: [
@@ -1704,7 +1711,7 @@ var MorePage = (function () {
                             content: 'Please wait...'
                         });
                         loading.present();
-                        _this.ss.dataList("phone=" + data.phone, "login.php").then(function (response) {
+                        _this.ss.dataList("phone=" + data.phone + "&password=" + data.password, "login.php").then(function (response) {
                             data = response;
                             console.log(data);
                             loading.dismiss();
@@ -1759,7 +1766,7 @@ var MorePage = (function () {
     };
     MorePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            template: "\n     <ion-list color=\"light\">\n      <button ion-item *ngIf=\"checkLogin()\" icon-right (click)=\"presentPopover($event)\">Admin</button>\n       <button ion-item *ngIf=\"!checkLogin()\" (click)=\"validationPop()\">Login</button>\n       <button ion-item *ngIf=\"!checkLogin()\" (click)=\"registerPop()\">Register</button>\n      <button *ngIf=\"checkLogin\" ion-item  (click)=\"logout()\">Logout</button>\n       </ion-list>\n      "
+            template: "\n     <ion-list color=\"light\">\n      <button ion-item *ngIf=\"checkLogin()\" icon-right (click)=\"presentPopover($event)\">Admin</button>\n       <button ion-item *ngIf=\"!checkLogin()\" (click)=\"validationPop()\">Login</button>\n       <button ion-item *ngIf=\"!checkLogin()\" (click)=\"registerPop()\">Register</button>\n      <button *ngIf=\"checkLogin()\" ion-item  (click)=\"logout()\">Logout</button>\n       </ion-list>\n      "
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["s" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* LoadingController */],
             __WEBPACK_IMPORTED_MODULE_4__providers_servercon__["a" /* Servercon */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["r" /* ToastController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* PopoverController */],
@@ -2771,7 +2778,6 @@ var AddcontentPage = (function () {
                     }
                     else {
                         console.log('ni imgae');
-                        // this.insertContent('http://202.71.107.231:81/betweenai/no_photo.png', this.retrieveForm);
                     }
                 }
             }, function (err) {
@@ -3869,7 +3875,7 @@ var DetailPage = (function () {
     DetailPage.prototype.sharelink = function (category_id, content_id) {
         var link = this.ss.ServerURL + "content.php?id=" + category_id + "&content_id=" + content_id;
         //alert(link);
-        __WEBPACK_IMPORTED_MODULE_2_ionic_native__["j" /* SocialSharing */].share(this.title, 'Betweenlifestyle', this.image_path, link).then(function () {
+        __WEBPACK_IMPORTED_MODULE_2_ionic_native__["j" /* SocialSharing */].share(this.title, 'SenShare', this.image_path, link).then(function () {
             // Success!
         }).catch(function () {
             // Error!

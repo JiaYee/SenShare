@@ -28,8 +28,10 @@ sleep(2);
 if(true)
 {
 	$phone    = $_POST["phone"];
+	$password = $_POST["password"];
+	$hashpass = hash('sha256', $password);
 
-	$check_query = "SELECT id FROM mstmember WHERE  phone_number = '$phone' AND status=1";
+	$check_query = "SELECT id FROM mstmember WHERE  phone_number = '$phone' AND status=1 AND password = '$hashpass'";
 	$check_result = mysql_query($check_query);
 
 	if(!$check_result)

@@ -543,7 +543,7 @@ sharelink(category_id:string,content_id:string)
 //alert(link);
 
 
-SocialSharing.share(this.title, 'Betweenlifestyle',this.image_path, link).then(() => {
+SocialSharing.share(this.title, 'SenShare',this.image_path, link).then(() => {
   // Success!
 }).catch(() => {
   // Error!

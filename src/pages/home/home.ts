@@ -135,7 +135,7 @@ export class SubPage {
       <button ion-item *ngIf="checkLogin()" icon-right (click)="presentPopover($event)">Admin</button>
        <button ion-item *ngIf="!checkLogin()" (click)="validationPop()">Login</button>
        <button ion-item *ngIf="!checkLogin()" (click)="registerPop()">Register</button>
-      <button *ngIf="checkLogin" ion-item  (click)="logout()">Logout</button>
+      <button *ngIf="checkLogin()" ion-item  (click)="logout()">Logout</button>
        </ion-list>
       `
 })
@@ -187,6 +187,10 @@ this.aboutpage =AboutusPage;
         {
           name: 'phone',
           placeholder: 'Phone Number',
+        },
+        {
+          name: 'password',
+          placeholder: 'Password',
         }
       ],
       buttons: [
@@ -204,7 +208,7 @@ this.aboutpage =AboutusPage;
             content: 'Please wait...'
             });
           loading.present();
-          this.ss.dataList("phone="+data.phone,"register.php").then((response)=>{
+          this.ss.dataList("phone="+data.phone+"&password="+data.password,"register.php").then((response)=>{
 
             data = response;
             console.log(data);
@@ -243,6 +247,10 @@ validationPop()
       {
         name: 'phone',
         placeholder: 'Phone Number',
+      },
+      {
+        name: 'password',
+        placeholder: 'Password',
       }
     ],
     buttons: [
@@ -260,7 +268,7 @@ validationPop()
           content: 'Please wait...'
           });
         loading.present();
-        this.ss.dataList("phone="+data.phone,"login.php").then((response)=>{
+        this.ss.dataList("phone="+data.phone+"&password="+data.password,"login.php").then((response)=>{
 
           data = response;
           console.log(data);

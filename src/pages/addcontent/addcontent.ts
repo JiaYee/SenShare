@@ -505,7 +505,6 @@ export class AddcontentPage {
                             this.upload(this.lastImage);
                         }else{
                             console.log('ni imgae');
-                            // this.insertContent('http://202.71.107.231:81/betweenai/no_photo.png', this.retrieveForm);
                         }
                     }
                 },

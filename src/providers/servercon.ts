@@ -111,7 +111,6 @@ uploadFile(param: any, page: string){
 
 insertContent(param: string, page: string){
   console.log('param', param);
-// let yy = 'website_url=&weekend_business_hour=&category_id=16&phone_mobile=&weekday_business_hour=&phone_office=&name=JJ Hotel &image_path=http://betweenlifestyle.com/android/upload/no_photo.png&type=0&address=&desc=&latitude=3.0312371&longitude=101.61576'
 
  return new Promise(resolve => {
 

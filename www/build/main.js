@@ -1644,6 +1644,7 @@ var MorePage = (function () {
                 {
                     name: 'password',
                     placeholder: 'Password',
+                    type: 'password'
                 }
             ],
             buttons: [
@@ -1694,6 +1695,7 @@ var MorePage = (function () {
                 {
                     name: 'password',
                     placeholder: 'Password',
+                    type: 'password'
                 }
             ],
             buttons: [
@@ -4282,7 +4284,8 @@ var FilterPage = (function () {
 }());
 
 var SublistPage = (function () {
-    function SublistPage(actionSheetCtrl, alertCtrl, events, popoverCtrl, navCtrl, navParams, loadingCtrl, ss) {
+    function SublistPage(viewCtrl, actionSheetCtrl, alertCtrl, events, popoverCtrl, navCtrl, navParams, loadingCtrl, ss) {
+        this.viewCtrl = viewCtrl;
         this.actionSheetCtrl = actionSheetCtrl;
         this.alertCtrl = alertCtrl;
         this.events = events;
@@ -4319,9 +4322,16 @@ var SublistPage = (function () {
             this.getLocation();
         }
     };
-    SublistPage.prototype.showLP = function () {
-        this.showlocpage = true;
-        this.showme = false;
+    SublistPage.prototype.showLP = function (showlocpage) {
+        if (showlocpage == true) {
+            this.showlocpage = false;
+            this.viewCtrl.showBackButton(true);
+        }
+        else {
+            this.showlocpage = true;
+            this.showme = false;
+            this.viewCtrl.showBackButton(false);
+        }
     };
     SublistPage.prototype.presentAS = function (item) {
         var _this = this;
@@ -4733,9 +4743,9 @@ var SublistPage = (function () {
     ], SublistPage.prototype, "content", void 0);
     SublistPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-sublist',template:/*ion-inline-start:"C:\Users\131216\Crappy\SenShare\src\pages\sublist\sublist.html"*/'\n\n<ion-header>\n\n <ion-navbar color="darkbule" class="navbar">\n\n    <ion-title>{{title}}</ion-title>\n\n    <ion-buttons end>\n\n      <button *ngIf="!showlocpage" color="white" ion-button icon-only (click)="presentPopover($event)">\n\n        <ion-icon name="list"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n <ion-searchbar class="sb" *ngIf="showme" (search)="getItems($event)" [showCancelButton]="shouldShowCancel"  (ionCancel)="onCancel($event)">></ion-searchbar>\n\n  <button *ngIf="showme" ion-button icon-only class="sbl" (click)="showLP()">\n\n    <ion-icon name="arrow-dropdown"></ion-icon>\n\n  </button>\n\n\n\n   <!-- <ion-select class="sbl" *ngIf="showme" placeholder="V" [(ngModel)]="loc" (ionChange)="washData(loc)" interface="action-sheet">\n\n     <ion-option *ngFor="let location of locations" value="{{location.name}}">{{location.name}}</ion-option>\n\n   </ion-select> -->\n\n</ion-header>\n\n\n\n<div class="locpage" *ngIf="showlocpage">\n\n  <ion-grid>\n\n    <ion-row>\n\n      <ion-col *ngFor="let location of locations" col-6>\n\n        <button ion-button block (click)="washData(location.name)">{{location.chinese}}<br>{{location.english}}</button>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n</div>\n\n\n\n<ion-content >\n\n\n\n\n\n  <div class="img_item" *ngFor="let item of items" [ngStyle]="listimage(item.image_path)" style =" transform: translate3d(0px, 0px, 0px);" (click)="openPage(item)" (press)="presentAS(item)">\n\n\n\n   <div class="bottom_txt">\n\n   <p> {{item.content_name}} </p>\n\n     </div>\n\n\n\n  </div>\n\n\n\n<ion-infinite-scroll (ionInfinite)="doInfinite($event)">\n\n    <ion-infinite-scroll-content\n\n      loadingSpinner="bubbles"\n\n      loadingText="Loading more data...">\n\n\n\n    </ion-infinite-scroll-content>\n\n  </ion-infinite-scroll>\n\n\n\n\n\n<ion-fab right bottom>\n\n <button ion-fab color="light" (click)="seachshow()"><ion-icon name="search"></ion-icon></button>\n\n\n\n</ion-fab>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\131216\Crappy\SenShare\src\pages\sublist\sublist.html"*/
+            selector: 'page-sublist',template:/*ion-inline-start:"C:\Users\131216\Crappy\SenShare\src\pages\sublist\sublist.html"*/'\n\n<ion-header>\n\n <ion-navbar color="darkbule" class="navbar">\n\n    <ion-title>{{title}}</ion-title>\n\n    <ion-buttons end>\n\n      <button *ngIf="!showlocpage" color="white" ion-button icon-only (click)="presentPopover($event)">\n\n        <ion-icon name="list"></ion-icon>\n\n      </button>\n\n      <button *ngIf="showlocpage" color="white" ion-button icon-only (click)="showLP(showlocpage)">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n <ion-searchbar class="sb" *ngIf="showme" (search)="getItems($event)" [showCancelButton]="shouldShowCancel"  (ionCancel)="onCancel($event)">></ion-searchbar>\n\n  <button *ngIf="showme" ion-button icon-only class="sbl" (click)="showLP(showlocpage)">\n\n    <ion-icon name="arrow-dropdown"></ion-icon>\n\n  </button>\n\n\n\n   <!-- <ion-select class="sbl" *ngIf="showme" placeholder="V" [(ngModel)]="loc" (ionChange)="washData(loc)" interface="action-sheet">\n\n     <ion-option *ngFor="let location of locations" value="{{location.name}}">{{location.name}}</ion-option>\n\n   </ion-select> -->\n\n</ion-header>\n\n\n\n<div class="locpage" *ngIf="showlocpage">\n\n  <ion-grid>\n\n    <ion-row>\n\n      <ion-col *ngFor="let location of locations" col-6>\n\n        <button ion-button block (click)="washData(location.name)">{{location.chinese}}<br>{{location.english}}</button>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n</div>\n\n\n\n<ion-content >\n\n\n\n\n\n  <div class="img_item" *ngFor="let item of items" [ngStyle]="listimage(item.image_path)" style =" transform: translate3d(0px, 0px, 0px);" (click)="openPage(item)" (press)="presentAS(item)">\n\n\n\n   <div class="bottom_txt">\n\n   <p> {{item.content_name}} </p>\n\n     </div>\n\n\n\n  </div>\n\n\n\n<ion-infinite-scroll (ionInfinite)="doInfinite($event)">\n\n    <ion-infinite-scroll-content\n\n      loadingSpinner="bubbles"\n\n      loadingText="Loading more data...">\n\n\n\n    </ion-infinite-scroll-content>\n\n  </ion-infinite-scroll>\n\n\n\n\n\n<ion-fab right bottom>\n\n <button ion-fab color="light" (click)="seachshow()"><ion-icon name="search"></ion-icon></button>\n\n\n\n</ion-fab>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\131216\Crappy\SenShare\src\pages\sublist\sublist.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* PopoverController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_2__providers_servercon__["a" /* Servercon */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* PopoverController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_2__providers_servercon__["a" /* Servercon */]])
     ], SublistPage);
     return SublistPage;
 }());

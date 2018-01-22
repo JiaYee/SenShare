@@ -191,6 +191,7 @@ this.aboutpage =AboutusPage;
         {
           name: 'password',
           placeholder: 'Password',
+          type: 'password'
         }
       ],
       buttons: [
@@ -251,6 +252,7 @@ validationPop()
       {
         name: 'password',
         placeholder: 'Password',
+        type: 'password'
       }
     ],
     buttons: [

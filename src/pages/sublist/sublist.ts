@@ -65,7 +65,7 @@ display: any;
 @ViewChild(Content) content: Content;
 
 
-  constructor(public actionSheetCtrl: ActionSheetController, public alertCtrl: AlertController, public events: Events, public popoverCtrl: PopoverController, public navCtrl: NavController, public navParams: NavParams,public loadingCtrl: LoadingController,public ss:Servercon) {
+  constructor(public viewCtrl: ViewController, public actionSheetCtrl: ActionSheetController, public alertCtrl: AlertController, public events: Events, public popoverCtrl: PopoverController, public navCtrl: NavController, public navParams: NavParams,public loadingCtrl: LoadingController,public ss:Servercon) {
 
     this.showme=false;
     this.start=10;
@@ -96,10 +96,19 @@ display: any;
     }
   }
 
-  showLP()
+  showLP(showlocpage)
   {
-    this.showlocpage = true;
-    this.showme = false;
+    if(showlocpage == true)
+    {
+      this.showlocpage = false;
+      this.viewCtrl.showBackButton(true);
+    }
+    else
+    {
+      this.showlocpage = true;
+      this.showme = false;
+      this.viewCtrl.showBackButton(false);
+    }
   }
 
   presentAS(item)

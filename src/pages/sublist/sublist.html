@@ -6,10 +6,13 @@
       <button *ngIf="!showlocpage" color="white" ion-button icon-only (click)="presentPopover($event)">
         <ion-icon name="list"></ion-icon>
       </button>
+      <button *ngIf="showlocpage" color="white" ion-button icon-only (click)="showLP(showlocpage)">
+        <ion-icon name="close"></ion-icon>
+      </button>
     </ion-buttons>
   </ion-navbar>
  <ion-searchbar class="sb" *ngIf="showme" (search)="getItems($event)" [showCancelButton]="shouldShowCancel"  (ionCancel)="onCancel($event)">></ion-searchbar>
-  <button *ngIf="showme" ion-button icon-only class="sbl" (click)="showLP()">
+  <button *ngIf="showme" ion-button icon-only class="sbl" (click)="showLP(showlocpage)">
     <ion-icon name="arrow-dropdown"></ion-icon>
   </button>
 
